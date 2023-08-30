@@ -21,6 +21,9 @@ RUN DESTDIR=/output make install
 # runtime container definition below
 FROM quay.io/centos/centos:stream9
 
+EXPOSE 8080
+EXPOSE 8443
+
 COPY --from=builder /output /
 
 RUN dnf install -y qatengine && dnf clean all
